@@ -18,12 +18,13 @@ class CloakEffect:
         self.cloak_type = 'Red'
         self.running = False
 
+        # Corrected HSV Ranges
         self.color_bounds = {
             'Red': ([0, 120, 70], [10, 255, 255]),
-            'Blue': ([90, 50, 50], [130, 255, 255]),
-            'Green': ([35, 52, 72], [90, 255, 255]),
+            'Blue': ([94, 80, 2], [126, 255, 255]),
+            'Green': ([35, 50, 50], [90, 255, 255]),
             'Yellow': ([20, 100, 100], [30, 255, 255]),
-            'Skin': ([0, 48, 80], [20, 255, 255]),
+            'Skin': ([0, 48, 80], [20, 255, 255])
         }
 
     def set_cloak_type(self, cloak_type):
@@ -40,7 +41,14 @@ class CloakEffect:
     def generate_mask(self, frame):
         hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         lower, upper = self.color_bounds[self.cloak_type]
+
         mask = cv2.inRange(hsv_frame, np.array(lower), np.array(upper))
+
+        # Noise removal
+        kernel = np.ones((3, 3), np.uint8)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel, iterations=2)
+        mask = cv2.dilate(mask, kernel, iterations=1)
+
         return mask
 
     def start_cloak(self):
@@ -114,7 +122,7 @@ if __name__ == "__main__":
     flask_thread.daemon = True
     flask_thread.start()
 
-    time.sleep(2)  # Give the server time to start
+    time.sleep(2)  # Wait for server to start
 
     # Open browser and store the process
     browser_process = subprocess.Popen(["cmd", "/c", "start", "chrome", "http://127.0.0.1:5000"])

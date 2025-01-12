@@ -30,9 +30,8 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ cloak_type: cloakType })
-            })
-            .then(response => response.json())
-            .then(data => {
+            }).then(response => response.json())
+              .then(data => {
                 alert(data.message);
             });
         }

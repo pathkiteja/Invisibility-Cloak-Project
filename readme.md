@@ -16,10 +16,9 @@ A **Real-Time Invisibility Cloak** using Python, OpenCV, and Flask with a sleek 
 ## 📸 **Screenshots**
 
 ### 🎨 Web Interface
-<img src="screenshots/ui.png" width="700"/>
+<img src="screenshots/screenshort.pn" width="700"/>
 
-### 🧥 Cloak Effect in Action
-<img src="screenshots/cloak-effect.png" width="700"/>
+
 
 ---
 
