@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invisibility Cloak</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🧥 Invisibility Cloak Control Panel</h1>
+        <div class="buttons">
+            <button onclick="activateCloak('Red')">Red Cloak</button>
+            <button onclick="activateCloak('Blue')">Blue Cloak</button>
+            <button onclick="activateCloak('Green')">Green Cloak</button>
+            <button onclick="activateCloak('Yellow')">Yellow Cloak</button>
+            <button onclick="activateCloak('Skin')">Skin Cloak</button>
+        </div>
+        <div class="video-container">
+            <h2>Live Cloak Effect 🎥</h2>
+            <img src="{{ url_for('video_feed') }}" id="video-stream">
+        </div>
+        <button id="exit-button" onclick="exitApp()">Exit</button>
+    </div>
+
+    <script>
+        function activateCloak(cloakType) {
+            fetch('/start', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ cloak_type: cloakType })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            });
+        }
+
+        function exitApp() {
+            fetch('/exit', { method: 'POST' })
+                .then(() => {
+                    alert('Server is shutting down...');
+                });
+        }
+    </script>
+</body>
+</html>
