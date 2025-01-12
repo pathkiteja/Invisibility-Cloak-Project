@@ -21,9 +21,15 @@ A **Real-Time Invisibility Cloak** using Python, OpenCV, and Flask with a sleek 
 
 ### 1. Clone the Repository
 
-pip install flask
-pip install opencv-python
-pip install numpy
-pip install requests
-pip install waitress
-pip install pillow  # Optional
+pip install flask .
+
+pip install opencv-python . 
+
+pip install numpy.
+
+pip install requests.
+
+pip install waitress.
+
+pip install pillow  # Optional.
+
