@@ -12,13 +12,7 @@ A **Real-Time Invisibility Cloak** using Python, OpenCV, and Flask with a sleek 
 - One-click server shutdown and browser auto-close.
 
 ---
-
-## 📸 **Screenshots**
-
-### 🎨 Web Interface
-<img src="screenshots/screenshort.pn" width="700"/>
-
-
+![Screenshot (59)](https://github.com/user-attachments/assets/2a903a71-9e3b-4508-8e56-a32c6649389c)
 
 ---
 
